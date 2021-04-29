@@ -1,0 +1,284 @@
+.post {
+
+    margin-top: 30px;
+    border-radius: 10px;
+    padding-top: 10px;
+  
+  
+    .post-content {
+     p {
+       white-space: pre-wrap;
+       word-wrap: break-word;
+     }
+    }
+    .time {
+      p {
+        text-align: right;
+        color: gray;
+        font-size: 14px;
+      }
+    }
+    .post-likes {
+      p {
+        font-size: 16px;
+        color: black;
+      }
+      strong {
+        font-weight: bolder;
+      }
+  
+      .no-of-likes {
+        margin-left: 13px;
+        margin-top: 1px;
+      }
+  
+      .heart-section {
+        margin-top: 10px;
+      }
+  
+      .edit-post {
+        p {
+          text-align: right;
+          font-size: 10px;
+          padding: 0;
+          margin: 10px 0 0;
+          color: gray;
+          .edit-post-text {
+            cursor: pointer;
+          }
+          .edit-post-text:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  
+    .post-submit {
+      button {
+        padding-left: 20px;
+        padding-right: 20px;
+        border: 0;
+        border-radius: 4px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        filter: brightness(110%);
+  
+        #submit-button-text {
+          filter: brightness(70%);
+        }
+      }
+  
+      button:hover {
+        filter: brightness(90%);
+      }
+    }
+  
+    .author {
+      a {
+        filter: brightness(50%);
+      }
+      
+  
+  
+      a:hover {
+        filter: brightness(30%);
+        text-decoration: none;
+      }
+    }
+  }
+  
+  .post-content-editable{
+    textarea {
+      border: 0;
+      width: 100%;
+      resize: none;
+      line-height: 25px;
+      overflow-y: hidden;
+  
+    }
+  
+    textarea::placeholder {
+      color: gray;
+    }
+  
+    textarea:focus {
+      border: 0;
+      outline: 0;
+    }
+  }
+  
+  .post-content-editing {
+    textarea {
+      width: 100%;
+      resize: none;
+      border-color: red;
+      border-width: 0;
+      border-radius: 5px;
+      filter: brightness(120%);
+      line-height: 25px;
+    }
+  
+    textarea::placeholder {
+      color: gray;
+    }
+  
+    textarea:focus {
+      outline: 0;
+    }
+  }
+  
+  .profile-name-section {
+    margin-top: 30px;
+    h3 {
+      text-align: center;
+    }
+  }
+  
+  .follow-info-section {
+    p {
+      text-align: center;
+    }
+  }
+  
+  p#no-following-message {
+    margin-top: 40vh;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 200%;
+  
+  }
+  
+  @keyframes post-animation {
+    0% {
+      //filter: brightness(200%);
+      line-height: 0;
+      height: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+    }
+  
+  
+    75% {
+      //filter: brightness(200%);
+      line-height: inherit;
+      height: inherit;
+      opacity: 0;
+      padding: inherit;
+  
+    }
+  
+    100% {
+      //filter: brightness(100%);
+      line-height: inherit;
+      opacity: 1;
+      margin: inherit;
+    }
+  }
+  
+  .post-animate {
+    animation-name: post-animation;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+  }
+  
+  
+  .heart:before,
+  .heart:after {
+    content: "";
+    background: inherit;
+    border-radius: 50%;
+    height: $heart_size;
+    width: $heart_size;
+    position: absolute;
+    animation-name: heart_grow;
+    animation-fill-mode: forwards;
+    animation-duration: $heart_animation_duration;
+  }
+  
+  .heart:before {
+    top: 0;
+    left: $heart_size / -2;
+  }
+  
+  .heart:after {
+    top: $heart_size / -2;
+    left: 0;
+  }
+  
+  @keyframes heart_grow {
+    from {
+      height: 0;
+    }
+  
+    to {
+      height: inherit;
+    }
+  }
+  
+  .heart.liked {
+    background: red;
+  
+  }
+  
+  .heart.not-liked {
+    filter: brightness(80%);
+  //  background is set by jsx
+  }
+  
+  .follow-button-section {
+    button {
+      background: white;
+      border-color: black;
+      border-width: 1.5px;
+      border-radius: 4px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  
+    button:hover {
+      background: lightgray;
+    }
+  }
+  
+  
+  #paginator_navigator {
+    margin-top: 30px;
+  }
+  
+  @keyframes fade-out-animation {
+    100% {
+      //filter: brightness(200%);
+      line-height: 0;
+      height: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+    }
+  
+  
+    50% {
+      //filter: brightness(200%);
+      line-height: inherit;
+      height: inherit;
+      opacity: 0;
+      padding: inherit;
+  
+    }
+  
+    0% {
+      //filter: brightness(100%);
+      line-height: inherit;
+      opacity: 1;
+      margin: inherit;
+    }
+  
+  }
+  .fade-out {
+    animation-name: fade-out-animation;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+  }
+  

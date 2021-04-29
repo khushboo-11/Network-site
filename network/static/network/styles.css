@@ -1,0 +1,223 @@
+.post {
+    margin-top: 30px;
+    border-radius: 10px;
+    padding-top: 10px;
+  }
+  .post .post-content p {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .post .time p {
+    text-align: right;
+    color: gray;
+    font-size: 14px;
+  }
+  .post .post-likes p {
+    font-size: 16px;
+    color: black;
+  }
+  .post .post-likes strong {
+    font-weight: bolder;
+  }
+  .post .post-likes .no-of-likes {
+    margin-left: 13px;
+    margin-top: 1px;
+  }
+  .post .post-likes .heart-section {
+    margin-top: 10px;
+  }
+  .post .post-likes .edit-post p {
+    text-align: right;
+    font-size: 10px;
+    padding: 0;
+    margin: 10px 0 0;
+    color: gray;
+  }
+  .post .post-likes .edit-post p .edit-post-text {
+    cursor: pointer;
+  }
+  .post .post-likes .edit-post p .edit-post-text:hover {
+    color: white;
+  }
+  .post .post-submit button {
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 0;
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    filter: brightness(110%);
+  }
+  .post .post-submit button #submit-button-text {
+    filter: brightness(70%);
+  }
+  .post .post-submit button:hover {
+    filter: brightness(90%);
+  }
+  .post .author a {
+    filter: brightness(50%);
+  }
+  .post .author a:hover {
+    filter: brightness(30%);
+    text-decoration: none;
+  }
+  
+  .post-content-editable textarea {
+    border: 0;
+    width: 100%;
+    resize: none;
+    line-height: 25px;
+    overflow-y: hidden;
+  }
+  .post-content-editable textarea::placeholder {
+    color: gray;
+  }
+  .post-content-editable textarea:focus {
+    border: 0;
+    outline: 0;
+  }
+  
+  .post-content-editing textarea {
+    width: 100%;
+    resize: none;
+    border-color: red;
+    border-width: 0;
+    border-radius: 5px;
+    filter: brightness(120%);
+    line-height: 25px;
+  }
+  .post-content-editing textarea::placeholder {
+    color: gray;
+  }
+  .post-content-editing textarea:focus {
+    outline: 0;
+  }
+  
+  .profile-name-section {
+    margin-top: 30px;
+  }
+  .profile-name-section h3 {
+    text-align: center;
+  }
+  
+  .follow-info-section p {
+    text-align: center;
+  }
+  
+  p#no-following-message {
+    margin-top: 40vh;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 200%;
+  }
+  
+  @keyframes post-animation {
+    0% {
+      line-height: 0;
+      height: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+    }
+    75% {
+      line-height: inherit;
+      height: inherit;
+      opacity: 0;
+      padding: inherit;
+    }
+    100% {
+      line-height: inherit;
+      opacity: 1;
+      margin: inherit;
+    }
+  }
+  .post-animate {
+    animation-name: post-animation;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+  }
+  
+  
+  
+  .heart:before,
+  .heart:after {
+    content: "";
+    background: inherit;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    animation-name: heart_grow;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+  }
+  
+  .heart:before {
+    top: 0;
+    left: -5px;
+  }
+  
+  .heart:after {
+    top: -5px;
+    left: 0;
+  }
+  
+  @keyframes heart_grow {
+    from {
+      height: 0;
+    }
+    to {
+      height: inherit;
+    }
+  }
+  .heart.liked {
+    background: red;
+  }
+  
+  .heart.not-liked {
+    filter: brightness(80%);
+  }
+  
+  .follow-button-section button {
+    background: white;
+    border-color: black;
+    border-width: 1.5px;
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .follow-button-section button:hover {
+    background: lightgray;
+  }
+  
+  #paginator_navigator {
+    margin-top: 30px;
+  }
+  
+  @keyframes fade-out-animation {
+    100% {
+      line-height: 0;
+      height: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+    }
+    50% {
+      line-height: inherit;
+      height: inherit;
+      opacity: 0;
+      padding: inherit;
+    }
+    0% {
+      line-height: inherit;
+      opacity: 1;
+      margin: inherit;
+    }
+  }
+  .fade-out {
+    animation-name: fade-out-animation;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+  }
