@@ -1,5 +1,7 @@
 import random
 
+from datetime import datetime
+
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser
@@ -70,3 +72,13 @@ class Post(models.Model):
             "color": color_mapper_dict[self.writer.color],
             "liked": logged_in_user in self.liking_users.all() if logged_in_user else False
         }
+
+
+class Room(models.Model):
+    room_name = models.CharField(max_length = 200)
+
+class Message(models.Model):
+    value = models.CharField(max_length = 1000)
+    date = models.DateTimeField(default = datetime.now, blank = True)
+    user = models.CharField(max_length = 100)
+    room = models.CharField(max_length = 1000)

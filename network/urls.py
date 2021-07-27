@@ -16,5 +16,10 @@ urlpatterns = [
     path("get-profile-info/<str:profile_name>", views.get_profile_info, name="get profile info"),
     path("like-post/<str:post_id>", views.like_post, name="like post"),
     path("follow-profile/<str:profile_username>", views.follow_profile, name="follow profile"),
-    path("update-post/<str:post_id>", views.update_post, name="update post")
+    path("update-post/<str:post_id>", views.update_post, name="update post"),
+    path("homepage", views.home, name = "homepage" ),
+    path("<str:room>/", views.room, name = "room"),
+    path("checkview", views.checkview, name = "checkview"),
+    path("send", views.send, name = "send"),
+    path("getMessages/<str:room>/", views.getMessages, name = "getMessages"),
 ]

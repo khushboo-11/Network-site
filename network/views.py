@@ -3,10 +3,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator, EmptyPage
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.core import serializers
 from .models import User, Post, color_mapper_dict
+from .models import Room, Message
+
 
 number_of_posts_per_page = 10
 
@@ -49,6 +51,8 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
+     
+       
 
         # Ensure password matches confirmation
         password = request.POST["password"]
@@ -61,6 +65,7 @@ def register(request):
         # Attempt to create new user
         try:
             user = User.objects.create_user(username, email, password)
+            
             user.save()
         except IntegrityError:
             return render(request, "network/register.html", {
@@ -70,6 +75,7 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "network/register.html")
+
 
 def get_posts(request, which_posts, page_number=1):
     if which_posts == "all":
@@ -180,3 +186,53 @@ def update_post(request, post_id):
 
     return HttpResponse(status=204)
     
+def home(request):
+    return render(request, 'network/home.html')
+
+
+def room(request, room):
+    username = request.GET.get('username')
+    room_details = Room.objects.get(room_name = room)
+    return render(request, 'network/room.html',
+    {
+        'username' : username,
+        'room' : room,
+        'room_details' : room_details
+    })
+
+
+def checkview(request):
+    room = request.POST['room_name']
+
+    username = request.POST['username']
+    print(room)
+
+    if Room.objects.filter(room_name = room).exists():
+        return redirect('/'+room+'/?username='+username)
+
+    else:
+        new_room = Room.objects.create(room_name = room)
+        new_room.save()
+        return redirect('/'+room+'/?username=' +username)
+
+
+
+def send(request):
+    message = request.POST['message']
+    username = request.POST['username']
+    room_id = request.POST['room_id']
+
+    new_message = Message.objects.create(value=message,
+                                         user = username,
+                                         room = room_id)
+    new_message.save()
+    return HttpResponse('Message Sent')
+
+def getMessages(request, room):
+    room_details = Room.objects.get(room_name = room)
+    messages = Message.objects.filter(room = room_details.id)
+    return JsonResponse(
+        {
+        'messages' : list(messages.values())
+        }
+    )

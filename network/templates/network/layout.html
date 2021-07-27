@@ -28,6 +28,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'view posts' 'all' %}" id="all-posts-link">All Posts</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'homepage' %}">
+                        homepage
+                    </a>
+                </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'view posts' 'following' %}">Following</a>
